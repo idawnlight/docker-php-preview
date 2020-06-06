@@ -9,8 +9,8 @@ jobs:
     - uses: actions/checkout@v1
     - uses: jerray/publish-docker-action@master
       with:
-        username: metowolf
+        username: idawnlight
         password: ${{ secrets.DOCKER_TOKEN }}
-        repository: metowolf/php
-        cache: metowolf/php
+        repository: idawnlight/php
+        cache: idawnlight/php
         auto_tag: true
