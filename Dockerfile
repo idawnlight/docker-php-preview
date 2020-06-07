@@ -1,6 +1,8 @@
 FROM alpine:3.11 as builder
 
-LABEL maintainer="metowolf <i@i-meto.com>"
+# Appreciate metowolf for this great work!
+# LABEL maintainer="metowolf <i@i-meto.com>"
+LABEL maintainer="idawnlight <idawn@live.com>"
 
 ARG PHP_VERSION=7.4.6
 ARG COMPOSER_VERSION=1.10.6
@@ -311,7 +313,9 @@ RUN strip --strip-all `php-config --extension-dir`/*.so
 
 FROM alpine:3.11
 
-LABEL maintainer="metowolf <i@i-meto.com>"
+# Appreciate metowolf for this great work!
+# LABEL maintainer="metowolf <i@i-meto.com>"
+LABEL maintainer="idawnlight <idawn@live.com>"
 
 COPY --from=builder /usr/local/ /usr/local/
 

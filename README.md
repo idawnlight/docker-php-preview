@@ -1,3 +1,9 @@
+# What's different?
+
+- Fixed a temporary build issue
+  - [Bug #79445: Connection timed out when accessing website from github actions](https://bugs.php.net/bug.php?id=79445)
+  - It seems php.net has terminated the mirror project, so I had to use `mirrors.sohu.com`
+
 ### Pull
 
 ```
