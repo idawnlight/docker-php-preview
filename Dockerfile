@@ -4,7 +4,7 @@ FROM alpine:3.12 as builder
 # LABEL maintainer="metowolf <i@i-meto.com>"
 LABEL maintainer="idawnlight <idawn@live.com>"
 
-ARG PHP_VERSION=7.4.7
+ARG PHP_VERSION=8.0.0alpha1
 ARG COMPOSER_VERSION=1.10.6
 
 ENV PHP_INI_DIR /usr/local/etc/php
@@ -16,8 +16,8 @@ RUN set -ex \
   && cd /usr/src \
   # && wget -O php.tar.xz https://secure.php.net/get/php-$PHP_VERSION.tar.xz/from/this/mirror \
   # && wget -O php.tar.xz.asc https://secure.php.net/get/php-$PHP_VERSION.tar.xz.asc/from/this/mirror \
-  && wget -O php.tar.xz https://mirrors.sohu.com/php/php-$PHP_VERSION.tar.xz \
-  && wget -O php.tar.xz.asc https://mirrors.sohu.com/php/php-$PHP_VERSION.tar.xz.asc \
+  && wget -O php.tar.xz https://php-download.dawn.workers.dev/~pollita/php-$PHP_VERSION.tar.xz \
+  && wget -O php.tar.xz.asc https://php-download.dawn.workers.dev/~pollita/php-$PHP_VERSION.tar.xz.asc \
   && export GNUPGHOME="$(mktemp -d)"; \
     for key in \
       42670A7FE4D0441C8E4632349E4FDC074A4EF02D \
