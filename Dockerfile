@@ -17,17 +17,7 @@ RUN set -ex \
   # && wget -O php.tar.xz https://secure.php.net/get/php-$PHP_VERSION.tar.xz/from/this/mirror \
   # && wget -O php.tar.xz.asc https://secure.php.net/get/php-$PHP_VERSION.tar.xz.asc/from/this/mirror \
   && wget -O php.tar.xz https://php-download.dawn.workers.dev/~pollita/php-$PHP_VERSION.tar.xz \
-  && wget -O php.tar.xz.asc https://php-download.dawn.workers.dev/~pollita/php-$PHP_VERSION.tar.xz.asc \
-  && export GNUPGHOME="$(mktemp -d)"; \
-    for key in \
-      42670A7FE4D0441C8E4632349E4FDC074A4EF02D \
-      5A52880781F755608BF815FC910DEB46F53EA312 \
-    ; do \
-      gpg --batch --keyserver ha.pool.sks-keyservers.net --keyserver-options timeout=10 --recv-keys "$key" || \
-      gpg --batch --keyserver hkp://ipv4.pool.sks-keyservers.net --keyserver-options timeout=10 --recv-keys "$key" || \
-      gpg --batch --keyserver hkp://pgp.mit.edu:80 --keyserver-options timeout=10 --recv-keys "$key" ; \
-    done \
-  && gpg --batch --verify php.tar.xz.asc php.tar.xz
+  && wget -O php.tar.xz.asc https://php-download.dawn.workers.dev/~pollita/php-$PHP_VERSION.tar.xz.asc
 
 COPY docker-php-source /usr/local/bin/
 
