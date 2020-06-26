@@ -236,11 +236,6 @@ RUN apk add --no-cache \
   && (rm -rf /usr/local/lib/php/test/tidy || true) \
   && (rm -rf /usr/local/lib/php/doc/tidy || true)
 
-# xmlrpc
-RUN docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) xmlrpc \
-  && (rm -rf /usr/local/lib/php/test/xmlrpc || true) \
-  && (rm -rf /usr/local/lib/php/doc/xmlrpc || true)
-
 # xsl
 RUN apk add --no-cache \
     libxslt-dev \
