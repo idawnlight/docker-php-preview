@@ -122,13 +122,6 @@ RUN apk add --no-cache \
     libxpm-dev \
     freetype-dev \
   && docker-php-ext-configure gd \
-    --with-gd \
-    --with-webp-dir=/usr \
-    --with-jpeg-dir=/usr \
-    --with-png-dir=/usr \
-    --with-zlib-dir=/usr \
-    --with-xpm-dir=/usr \
-    --with-freetype-dir=/usr \
     --enable-gd-jis-conv \
   && docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) gd \
   && (rm -rf /usr/local/lib/php/test/gd || true) \
@@ -147,19 +140,6 @@ RUN apk add --no-cache \
   && docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) gmp \
   && (rm -rf /usr/local/lib/php/test/gmp || true) \
   && (rm -rf /usr/local/lib/php/doc/gmp || true)
-
-# imagick
-RUN apk add --no-cache \
-    imagemagick-dev \
-  && (pickle install imagick -n --defaults || true) \
-  && cd /tmp/imagick/imagick* \
-  && phpize \
-  && ./configure \
-  && make -j$(getconf _NPROCESSORS_ONLN) \
-  && make install \
-  && docker-php-ext-enable imagick \
-  && (rm -rf /usr/local/lib/php/test/imagick || true) \
-  && (rm -rf /usr/local/lib/php/doc/imagick || true)
 
 # intl
 RUN apk add --no-cache \
@@ -243,22 +223,6 @@ RUN docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) sockets \
 RUN docker-php-ext-enable sodium \
   && (rm -rf /usr/local/lib/php/test/sodium || true) \
   && (rm -rf /usr/local/lib/php/doc/sodium || true)
-
-# swoole
-RUN (pickle install swoole -n --defaults || true) \
-  && cd /tmp/swoole/swoole* \
-  && phpize \
-  && ./configure \
-    --enable-openssl \
-    --enable-sockets \
-    --enable-http2 \
-    --enable-mysqlnd \
-    --enable-coroutine-postgresql \
-  && make -j$(getconf _NPROCESSORS_ONLN) \
-  && make install \
-  && docker-php-ext-enable swoole \
-  && (rm -rf /usr/local/lib/php/test/swoole || true) \
-  && (rm -rf /usr/local/lib/php/doc/swoole || true)
 
 # sysvsem
 RUN docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) sysvsem \
