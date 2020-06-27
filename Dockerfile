@@ -14,8 +14,6 @@ RUN set -ex \
   && apk add --no-cache gnupg \
   && mkdir -p /usr/src \
   && cd /usr/src \
-  # && wget -O php.tar.xz https://secure.php.net/get/php-$PHP_VERSION.tar.xz/from/this/mirror \
-  # && wget -O php.tar.xz.asc https://secure.php.net/get/php-$PHP_VERSION.tar.xz.asc/from/this/mirror \
   && wget -O php.tar.xz https://php-download.dawn.workers.dev/~pollita/php-$PHP_VERSION.tar.xz \
   && wget -O php.tar.xz.asc https://php-download.dawn.workers.dev/~pollita/php-$PHP_VERSION.tar.xz.asc
 
@@ -319,6 +317,8 @@ RUN set -ex \
       echo 'opcache.revalidate_freq=60'; \
       echo 'opcache.fast_shutdown=1'; \
       echo 'opcache.enable_cli=1'; \
+      echo 'opcache.jit=1205'; \
+      echo 'opcache.jit_buffer_size=64M'; \
     } > /usr/local/etc/php/conf.d/opcache-recommended.ini \
   && { \
       echo 'memory_limit=256M'; \
