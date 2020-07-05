@@ -317,7 +317,7 @@ RUN set -ex \
       echo 'opcache.revalidate_freq=60'; \
       echo 'opcache.fast_shutdown=1'; \
       echo 'opcache.enable_cli=1'; \
-      echo 'opcache.jit=1205'; \
+      echo 'opcache.jit=1255'; \
       echo 'opcache.jit_buffer_size=64M'; \
     } > /usr/local/etc/php/conf.d/opcache-recommended.ini \
   && { \
