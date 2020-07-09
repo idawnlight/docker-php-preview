@@ -14,8 +14,8 @@ RUN set -ex \
   && apk add --no-cache gnupg \
   && mkdir -p /usr/src \
   && cd /usr/src \
-  && wget -O php.tar.xz https://php-download.dawn.workers.dev/~pollita/php-$PHP_VERSION.tar.xz \
-  && wget -O php.tar.xz.asc https://php-download.dawn.workers.dev/~pollita/php-$PHP_VERSION.tar.xz.asc
+  && wget -O php.tar.xz https://php-download.dawn.workers.dev/~carusogabriel/php-$PHP_VERSION.tar.xz \
+  && wget -O php.tar.xz.asc https://php-download.dawn.workers.dev/~carusogabriel/php-$PHP_VERSION.tar.xz.asc
 
 COPY docker-php-source /usr/local/bin/
 
