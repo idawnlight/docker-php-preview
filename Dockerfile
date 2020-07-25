@@ -192,15 +192,15 @@ RUN docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) pgsql \
   && (rm -rf /usr/local/lib/php/doc/pgsql || true)
 
 # redis
-RUN (pickle install redis -n --defaults || true) \
-  && cd /tmp/redis/redis* \
-  && phpize \
-  && ./configure \
-  && make -j$(getconf _NPROCESSORS_ONLN) \
-  && make install \
-  && docker-php-ext-enable redis \
-  && (rm -rf /usr/local/lib/php/test/redis || true) \
-  && (rm -rf /usr/local/lib/php/doc/redis || true)
+# RUN (pickle install redis -n --defaults || true) \
+#   && cd /tmp/redis/redis* \
+#   && phpize \
+#   && ./configure \
+#   && make -j$(getconf _NPROCESSORS_ONLN) \
+#   && make install \
+#   && docker-php-ext-enable redis \
+#   && (rm -rf /usr/local/lib/php/test/redis || true) \
+#   && (rm -rf /usr/local/lib/php/doc/redis || true)
 
 # shmop
 RUN docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) shmop \
