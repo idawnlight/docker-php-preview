@@ -4,8 +4,8 @@ FROM alpine:3.12 as builder
 # LABEL maintainer="metowolf <i@i-meto.com>"
 LABEL maintainer="idawnlight <idawn@live.com>"
 
-ARG PHP_VERSION=8.0.0alpha2
-ARG COMPOSER_VERSION=1.10.8
+ARG PHP_VERSION=8.0.0alpha3
+ARG COMPOSER_VERSION=1.10.9
 
 ENV PHP_INI_DIR /usr/local/etc/php
 
@@ -14,8 +14,7 @@ RUN set -ex \
   && apk add --no-cache gnupg \
   && mkdir -p /usr/src \
   && cd /usr/src \
-  && wget -O php.tar.xz https://php-download.dawn.workers.dev/~carusogabriel/php-$PHP_VERSION.tar.xz \
-  && wget -O php.tar.xz.asc https://php-download.dawn.workers.dev/~carusogabriel/php-$PHP_VERSION.tar.xz.asc
+  && wget -O php.tar.xz https://github.com/php/php-src/archive/php-$PHP_VERSION.zip
 
 COPY docker-php-source /usr/local/bin/
 
