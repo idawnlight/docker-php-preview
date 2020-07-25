@@ -13,7 +13,7 @@ RUN set -ex \
   && apk upgrade \
   && mkdir -p /usr/src \
   && cd /usr/src \
-  && wget -O php.tar.gz https://github.com/php/php-src/archive/php-$PHP_VERSION.tar.gz
+  && wget -O php.tar.xz https://php-download.dawn.workers.dev/~carusogabriel/php-$PHP_VERSION.tar.xz
 
 COPY docker-php-source /usr/local/bin/
 
