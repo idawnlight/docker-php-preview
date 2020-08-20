@@ -5,7 +5,7 @@ FROM alpine:3.12 as builder
 LABEL maintainer="idawnlight <idawn@live.com>"
 
 ARG PHP_VERSION=8.0.0beta1
-ARG COMPOSER_VERSION=1.10.9
+ARG COMPOSER_VERSION=1.10.10
 
 ENV PHP_INI_DIR /usr/local/etc/php
 
