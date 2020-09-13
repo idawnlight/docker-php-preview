@@ -11,6 +11,7 @@ ENV PHP_INI_DIR /usr/local/etc/php
 
 RUN set -ex \
   && apk upgrade \
+  && apk add --no-cache gnupg \
   && mkdir -p /usr/src \
   && cd /usr/src \
   && wget -O php.tar.xz https://php-download.dawn.workers.dev/~carusogabriel/php-$PHP_VERSION.tar.xz \
