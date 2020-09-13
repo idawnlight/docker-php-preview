@@ -4,8 +4,8 @@ FROM alpine:3.12 as builder
 # LABEL maintainer="metowolf <i@i-meto.com>"
 LABEL maintainer="idawnlight <idawn@live.com>"
 
-ARG PHP_VERSION=8.0.0beta2
-ARG COMPOSER_VERSION=1.10.10
+ARG PHP_VERSION=8.0.0beta3
+ARG COMPOSER_VERSION=1.10.13
 
 ENV PHP_INI_DIR /usr/local/etc/php
 
@@ -13,7 +13,18 @@ RUN set -ex \
   && apk upgrade \
   && mkdir -p /usr/src \
   && cd /usr/src \
-  && wget -O php.tar.xz https://php-download.dawn.workers.dev/~pollita/php-$PHP_VERSION.tar.xz
+  && wget -O php.tar.xz https://php-download.dawn.workers.dev/~carusogabriel/php-$PHP_VERSION.tar.xz \
+  && wget -O php.tar.xz.asc https://php-download.dawn.workers.dev/~carusogabriel/php-$PHP_VERSION.tar.xz.asc \
+  && export GNUPGHOME="$(mktemp -d)"; \
+    for key in \
+      1729F83938DA44E27BA0F4D3DBDB397470D12172 \
+      BFDDD28642824F8118EF77909B67A5C12229118F \
+    ; do \
+      gpg --batch --keyserver ha.pool.sks-keyservers.net --keyserver-options timeout=10 --recv-keys "$key" || \
+      gpg --batch --keyserver hkp://ipv4.pool.sks-keyservers.net --keyserver-options timeout=10 --recv-keys "$key" || \
+      gpg --batch --keyserver hkp://pgp.mit.edu:80 --keyserver-options timeout=10 --recv-keys "$key" ; \
+    done \
+  && gpg --batch --verify php.tar.xz.asc php.tar.xz
 
 COPY docker-php-source /usr/local/bin/
 
