@@ -4,7 +4,7 @@ FROM alpine:3.12 as builder
 # LABEL maintainer="metowolf <i@i-meto.com>"
 LABEL maintainer="idawnlight <idawn@live.com>"
 
-ARG PHP_VERSION=8.0.0RC2
+ARG PHP_VERSION=8.0.0RC3
 ARG COMPOSER_VERSION=2.0.5
 
 ENV PHP_INI_DIR /usr/local/etc/php
@@ -14,8 +14,8 @@ RUN set -ex \
   && apk add --no-cache gnupg \
   && mkdir -p /usr/src \
   && cd /usr/src \
-  && wget -O php.tar.xz https://php-download.dawn.workers.dev/~pollita/php-$PHP_VERSION.tar.xz \
-  && wget -O php.tar.xz.asc https://php-download.dawn.workers.dev/~pollita/php-$PHP_VERSION.tar.xz.asc \
+  && wget -O php.tar.xz https://php-download.dawn.workers.dev/~carusogabriel/php-$PHP_VERSION.tar.xz \
+  && wget -O php.tar.xz.asc https://php-download.dawn.workers.dev/~carusogabriel/php-$PHP_VERSION.tar.xz.asc \
   && export GNUPGHOME="$(mktemp -d)"; \
     for key in \
       1729F83938DA44E27BA0F4D3DBDB397470D12172 \
